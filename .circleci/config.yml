@@ -23,13 +23,11 @@ jobs:
       - run:
           name: Run tests
           command: npm run test
-  deploy:
-    - heroku/deploy-via-git
 
 workflows:
-  build_and_test:
+  heroku_deploy:
     jobs:
       - build
-      - deploy:
+      - heroku/deploy-via-git:
           requires:
             - build
