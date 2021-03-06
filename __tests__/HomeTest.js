@@ -4,7 +4,7 @@ import Home from "../pages/index";
 
 test("Check for added text", () => {
   const { getByText } = render(<Home />);
-  expect(getByText("Added title")).toBeInTheDocument();
+  expect(getByText("Added title...")).toBeInTheDocument();
 });
 
 it("Renders appropriately", () => {
