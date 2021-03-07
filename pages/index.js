@@ -11,7 +11,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <div>
-          <h1>A little CI/CD demo app</h1>
+          <h1>Welcome to frontpage</h1>
         </div>
       </main>
     </div>
