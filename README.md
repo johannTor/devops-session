@@ -1,34 +1,24 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Continuous Integration/Deployment practice
 
-## Getting Started
+This repo was thought out as a simple exercise in setting up a Next.js project that uses the concepts of continuous integration (CI) and deployment (CD) which was achieved using the platforms [CircleCI](https://circleci.com/), [Heroku](https://www.heroku.com/) and Github.
 
-First, run the development server:
+In summary it involved connecting the Github repository to the CircleCI account, setting up the [Jest](https://jestjs.io/) framework for code testing, defining environment variables and a Procfile for automated deployment to Heroku, and at last creating a config.yml file which governs the process of building, testing and deploying the project through CircleCI.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## config.yml
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+In the config file you can declare different jobs and this project has one job which is 'build'. It handles building the project along with running tests and installing the dependencies needed. It also has the workflow 'heroku_deploy' which orchestrates the previous 'build' job along with the heroku/deploy-via-git job which is acquired form the Heroku orb. This job has the 'requires' conditional to the 'build' job so it won't deploy the project unless the build job succeeds (all tests pass etc).
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+The CircleCI configuration file can be setup in a very simple or complex ways allowing you to customize the build process to the project's needs. For instance you can control what branches run which jobs since maybe you only want to run the build/test jobs on a feature branch while the master branch should be able to deploy the project. 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## tests
+The [Jest](https://jestjs.io/) framework provides ways to test our code along with a bunch of libraries which makes it capable to test React related components. To run the tests locally you can run the command 'npm run test' but they are also run when the code is pushed to github.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+The tests I implemented were just for demonstration purposes, both testing if a function returned a certain value and if a specified text was present in a component. Jest looks for test files in the "\__tests__" folder which is where the current tests are located.
 
-## Learn More
+## support material:
+Continuous deployment for Next.js apps:  
+https://circleci.com/blog/continuous-deployment-for-next-js-apps/
 
-To learn more about Next.js, take a look at the following resources:
+Continuous integration for Next.js apps:  
+https://circleci.com/blog/next-testing/
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
