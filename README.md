@@ -22,6 +22,9 @@ https://circleci.com/blog/continuous-deployment-for-next-js-apps/
 Continuous integration for Next.js apps:  
 https://circleci.com/blog/next-testing/
 
-CircleCI documentation:
+CircleCI documentation:  
 https://circleci.com/docs/
 
+## other
+Live app for good measure:  
+https://devops-session.herokuapp.com/
