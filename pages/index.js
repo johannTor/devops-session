@@ -12,6 +12,7 @@ export default function Home() {
       <main className={styles.main}>
         <div>
           <h1>Welcome to frontpage</h1>
+          <h2>Should not be deployed</h2>
         </div>
       </main>
     </div>
